@@ -10,13 +10,9 @@ class BasePageLocators:
 
 
 class MainPageLocators(BasePageLocators):
-    COMPREHENSIONS = (
-        By.XPATH,
-        '//code/span[@class="comment" and contains(text(), "comprehensions")]'
-    )
-    EVENTS = (By.ID, 'events')
-    READ_MORE = (By.CSS_SELECTOR, 'a.readmore')
+    PEOPLE_PAGE_LINK = (By.CSS_SELECTOR, "a[href*='/people/']")
+    LESSONS_SLIDER_LEFT_BTN = (By.CSS_SELECTOR, "div[style*='left: 0px;']")
+    CLOSE_POPUP_BUTTON = (By.XPATH, '//*[@id="choose-design-modal"]/div/div/div[1]/button')
 
-
-class EventsPageLocators(BasePageLocators):
-    pass
+    def get_lesson_link(self, lesson_date):
+        return (By.XPATH, f"//div[contains(text(), '{lesson_date}')]/following-sibling::a")
