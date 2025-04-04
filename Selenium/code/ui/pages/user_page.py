@@ -1,6 +1,7 @@
 from ui.locators import user_locators
 from ui.pages.base_page import BasePage
-
+from dotenv import load_dotenv
+load_dotenv()
 
 class UserPage(BasePage):
     check_url = False

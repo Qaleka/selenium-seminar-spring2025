@@ -3,7 +3,7 @@ from selenium.webdriver import Keys
 from ui.locators import people_locators
 from ui.pages.base_page import BasePage
 from ui.pages.user_page import UserPage
-
+import time
 
 class PeoplePage(BasePage):
     url = "https://education.vk.company/people/"
@@ -13,6 +13,7 @@ class PeoplePage(BasePage):
         search_people = self.find(self.locators.SEARCH_BAR)
         search_people.send_keys(username)
         search_people.send_keys(Keys.ENTER)
+        time.sleep(1)
         link = self.find(self.locators.USER_LINK)
         href = link.get_attribute("href")
         link.click()

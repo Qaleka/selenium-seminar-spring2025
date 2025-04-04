@@ -1,11 +1,12 @@
 from base import BaseCase
-
+from _pytest.fixtures import FixtureRequest
 
 class TestLogin(BaseCase):
     authorize = False
 
-    def test_login(self, request):
+    def test_login(self, request:FixtureRequest):
         credentials = request.getfixturevalue("credentials")
+        print(credentials)
         self.login_page.login(*credentials)
         assert "Лента" in self.driver.title
 
